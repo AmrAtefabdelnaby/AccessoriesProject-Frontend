@@ -1,0 +1,18 @@
+$main-color: #A88E5A;
+$dark-color: #000000;
+$gray-color-text: #666666;
+$gray-bg: #F9F9F9;
+// $accent-color: hsl(35, 85%, 60%);
+// $highlight-color: hsl(4, 80%, 66%);
+// $secondary-bg: hsl(0, 0%, 96%);
+// $hover-color: hsl(212, 72%, 44%);
+
+body {
+    background-color: $gray-bg;
+    color: $gray-color-text;
+}
+
+button{
+    background-color: $main-color;
+    color: white;
+}

@@ -1,0 +1,63 @@
+.get-updates {
+  background-color: $main-color;
+  color: $gray-bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding-block: 3em;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+
+  .inner-container {
+    margin-bottom: 20px;
+  }
+
+  .form-section {
+    width: 30%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 20px;
+      font-size: 1.2em;
+      padding-inline-start: 20px;
+        padding-inline-end: 40px;
+    }
+
+    button {
+      position: absolute;
+      top: 3px;
+      right: 2px;
+      color: $gray-color-text;
+      padding: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      outline: 0;
+    }
+
+    button:hover svg {
+      color: $main-color;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .form-section {
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-section {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,13 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+    padding-block: 2rem;
+
+    hr {
+        width: 20%;
+    }
+}

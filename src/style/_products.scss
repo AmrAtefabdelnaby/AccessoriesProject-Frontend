@@ -1,0 +1,67 @@
+.categories {
+  display: flex;
+  flex-flow: column;
+  gap: 3rem;
+
+  .categories-buttons {
+    gap: 2rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    height: 45px;
+    button {
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      border-radius: 20px;
+      padding-inline: 2rem;
+      padding-block: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: capitalize;
+      &.active {
+        transform: translateY(-5px);
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
+  .products {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+
+  .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 45px;
+    
+    button{
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      border-radius: 20px;
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: capitalize;
+      &.active {
+        transform: translateY(-5px);
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.Register-page {
+    min-height: 70vh;
+
+    .register-link , .login-link{
+        margin-top: 1rem;
+        a{
+            color: $main-color;
+            text-decoration: underline;
+            cursor: pointer;
+             
+            &:hover{
+                color: $dark-color;
+                text-decoration: none;
+            }
+        }
+    }
+    .contact-form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2em;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        min-height: 75.8vh;
+    }
+    
+    .contact-form .form-group {
+        margin-bottom: 1.5em;
+    }
+    
+    .contact-form label {
+        display: block;
+        margin-bottom: 0.5em;
+    }
+    
+    .contact-form input {
+        width: 100%;
+        padding: 0.75em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+    
+    .error {
+        color: $main-color;
+        font-size: 0.9em;
+        margin-top: 0.5em;
+    }
+    
+    button {
+        padding: 0.75em 1.5em;
+        background-color: $main-color;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        font-weight: 700;
+    
+        &:hover {
+            background-color: transparent;
+            border: 1px solid $main-color;
+            color: $main-color;
+        }
+    }
+}
+

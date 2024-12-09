@@ -1,0 +1,20 @@
+.new-arrivals {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding-block: 3em;
+
+  
+
+  .new-arrivals-products {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: flex-start;
+  }
+
+  // Media Queries for Responsive Design
+}
+

@@ -1,0 +1,11 @@
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    background-color: $main-color;
+    color: $gray-bg;
+    padding-block: 1em;
+    margin-top: 20px;
+}
