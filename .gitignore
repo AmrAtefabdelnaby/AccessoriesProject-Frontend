@@ -9,7 +9,7 @@ lerna-debug.log*
 
 # Node.js dependencies
 node_modules/
-
+backendStrapi/
 # Build output
 dist/
 dist-ssr/
