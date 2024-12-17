@@ -4,6 +4,7 @@ import { CartContext } from "../../Context/cartContext/CartContext";
 import { useMutation } from "@tanstack/react-query";
 import axiosConfig from "../../axios/axiosConfig/AxiosConfig";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -42,7 +43,17 @@ export default function Cart() {
       });
     },
     onSuccess: () => {
-      alert("Your order has been successfully submitted!");
+      toast.success("Order submitted successfully" , {
+        style: {
+          border: "1px solid #A88E5A",
+          padding: "16px",
+          color: "#A88E5A",
+        },
+        iconTheme: {
+          primary: "#A88E5A",
+          secondary: "#FFFAEE",
+        },
+      });
       setCart([]); // Clear the cart on success
     },
     onError: (error) => {
@@ -50,13 +61,24 @@ export default function Cart() {
         "Error submitting order:",
         error.response?.data || error.message
       );
+      toast.error("Order failed. Please try again" , {
+        style: {
+          border: "1px solid #A88E5A",
+          padding: "16px",
+          color: "#A88E5A",
+        },
+        iconTheme: {
+          primary: "#A88E5A",
+          secondary: "#FFFAEE",
+        },
+      });
     },
   });
 
   const handleSubmitOrder = () => {
     if (cart.length > 0) {
       const formattedCartItems = cart.map((item) => ({
-        productName: item.title, // Assuming title is the product name
+        productName: item.title, 
         quantity: item.quantity,
         price: item.price,
       }));

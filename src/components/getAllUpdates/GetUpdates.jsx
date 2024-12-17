@@ -3,15 +3,37 @@ import { Field, Form, Formik } from "formik";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { useMutation } from "@tanstack/react-query";
 import axiosConfig from "../../axios/axiosConfig/AxiosConfig";
+import toast from "react-hot-toast";
+import * as Yup from "yup";
 
 export default function GetUpdates() {
   const GetUpdates = useMutation({
     mutationFn: (email) => axiosConfig.post("/api/get-updates", { data: { userEmail: email } }),
     onSuccess: () => {
-      alert("Email sent successfully");
+      toast.success("Email sent successfully", {
+        style: {
+          border: "1px solid #A88E5A",
+          padding: "16px",
+          color: "#A88E5A",
+        },
+        iconTheme: {
+          primary: "#A88E5A",
+          secondary: "#FFFAEE",
+        },
+      });
     },
-    onError: (error) => {
-      alert(`Error sending email: ${error.message}`);
+    onError: () => {
+      toast.error(`Error sending email`, {
+        style: {
+          border: "1px solid #A88E5A",
+          padding: "16px",
+          color: "#A88E5A",
+        },
+        iconTheme: {
+          primary: "#A88E5A",
+          secondary: "#FFFAEE",
+        },
+      });
     },
   });
 
@@ -30,8 +52,13 @@ export default function GetUpdates() {
       <Formik
         initialValues={{ email: "" }}
         onSubmit={handleSubmit}
+        validationSchema={Yup.object({
+          email: Yup.string()
+            .email("Invalid email format")
+            .required("Email is required"),
+        })}
       >
-        {({ errors, touched }) => (
+        {({ errors }) => (
           <Form action="submit" className="form-section">
             <div className="input-container">
               <Field
@@ -40,7 +67,7 @@ export default function GetUpdates() {
                 name="email"
                 placeholder="Email"
               />
-              {errors.email && touched.email && (
+              {errors.email && (
                 <div className="error-message">{errors.email}</div>
               )}
             </div>

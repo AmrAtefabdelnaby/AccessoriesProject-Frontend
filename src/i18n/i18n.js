@@ -15,8 +15,8 @@ i18n
       loadPath: "/locales/{{lng}}/translation.json", // Path to translation files
     },
     detection: {
-      order: ["path", "cookie", "localStorage", "navigator"], // Detect from these sources
-      caches: ["cookie"], // Cache user language
+      order: ["cookie", "localStorage", "path", "navigator"], // Order of detection
+      caches: ["cookie"], // Where to cache user language
     },
     react: {
       useSuspense: false, // Disable suspense mode

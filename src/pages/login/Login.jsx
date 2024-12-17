@@ -5,7 +5,7 @@ import Header from "../../components/header/Header";
 import { useMutation } from "@tanstack/react-query";
 import axiosCongif from "../../axios/axiosConfig/AxiosConfig";
 import toast from "react-hot-toast";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // Validation schema using Yup
 const validationSchema = Yup.object({

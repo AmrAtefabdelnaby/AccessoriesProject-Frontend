@@ -8,6 +8,7 @@ import { useCart } from "../../Context/cartContext/CartContext";
 export default function ProductCard({ image, title, description, price , id}) {
   const { addToCart } = useCart();
   const btnSection = useRef(null);
+  const navigate = useNavigate();
   
 
 useEffect(() => {
@@ -18,7 +19,8 @@ const handleAddToCart = (e) => {
   e.preventDefault(); 
    const token = sessionStorage.getItem("token");
     if (!token) {
-      navigate("/login"); 
+      navigate("/login");
+      window.scrollTo(0, 0);
     } else {
       addToCart({ id, title, description, price, image });
     }
