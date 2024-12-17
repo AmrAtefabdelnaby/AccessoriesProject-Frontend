@@ -17,10 +17,13 @@ export default function Cart() {
   }, [navigate, token]);
 
   const { cart, setCart, removeFromCart, updateQuantity } = useContext(CartContext);
+
+  // Get username from session storage
   const userName = sessionStorage.getItem("username");
 
+  // Submit order mutation
   const submitOrder = useMutation({
-    mutationFn: async ({ cartItems, userName }) => {
+    mutationFn: async ({ cartItems }) => {
       const totalPrice = cartItems.reduce(
         (total, item) => total + item.price * item.quantity,
         0
@@ -29,21 +32,30 @@ export default function Cart() {
       const formattedCartItems = cartItems.map((item) => ({
         quantity: item.quantity,
         price: item.price,
-        product: item.productName,
-        productId: item.productId,
+        product: item.title,
+        productId: item.id,
       }));
 
-      return axiosConfig.post("/api/carts?populate=*", {
-        data: {
-          cart_items: formattedCartItems,
-          userName: userName,
-          totalPrice: totalPrice,
-          orderStatus: "active",
+      // Send the request with the JWT token
+      return axiosConfig.post(
+        "/api/carts",
+        {
+          data: {
+            cart_items: formattedCartItems,
+            userName: userName, // Add userName if needed in data
+            totalPrice: totalPrice,
+            orderStatus: "active",
+          },
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the JWT token
+          },
+        }
+      );
     },
     onSuccess: () => {
-      toast.success("Order submitted successfully" , {
+      toast.success("Order submitted successfully", {
         style: {
           border: "1px solid #A88E5A",
           padding: "16px",
@@ -61,7 +73,7 @@ export default function Cart() {
         "Error submitting order:",
         error.response?.data || error.message
       );
-      toast.error("Order failed. Please try again" , {
+      toast.error("Order failed. Please try again", {
         style: {
           border: "1px solid #A88E5A",
           padding: "16px",
@@ -75,18 +87,17 @@ export default function Cart() {
     },
   });
 
+  // Handle order submission
   const handleSubmitOrder = () => {
     if (cart.length > 0) {
       const formattedCartItems = cart.map((item) => ({
-        productName: item.title, 
+        title: item.title,
         quantity: item.quantity,
         price: item.price,
+        id: item.id,
       }));
 
-      submitOrder.mutate({
-        cartItems: formattedCartItems,
-        userName,
-      });
+      submitOrder.mutate({ cartItems: formattedCartItems });
     } else {
       alert("Your cart is empty.");
     }

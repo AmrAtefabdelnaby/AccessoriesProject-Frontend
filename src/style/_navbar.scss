@@ -35,7 +35,7 @@
       overflow: hidden;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
       z-index: 999;
-      backdrop-filter: blur(11px);
+      // backdrop-filter: blur(11px);
       flex-flow: column;
       justify-content: flex-start;
       align-items: center;
@@ -80,6 +80,7 @@
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        font-size: 20px;
       }
     }
   }

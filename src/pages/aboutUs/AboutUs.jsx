@@ -1,7 +1,17 @@
 import React from "react";
 import "../../style/_aboutUs.scss";
+import { useQuery } from "@tanstack/react-query";
+import axiosConfig from "../../axios/axiosConfig/AxiosConfig";
 
 export default function AboutUs() {
+  const { data } = useQuery({
+    queryKey: ["teamMembers"],
+    queryFn: () => axiosConfig.get("/api/team-members?populate=*").then((res) => res.data),
+    onSuccess: (data) => console.log(data),
+    onError: (error) => console.log(error),
+  });
+
+  console.log(data);
   return (
     <div className="about-us">
       <div className="header">
@@ -27,33 +37,18 @@ export default function AboutUs() {
         <div className="team">
           <h2>Meet Our Team</h2>
           <div className="team-list">
+            {data?.data?.map((member) => (
+              
             <div className="team-member">
               <img
-                src="../../../public/images for my app/team-member/_ARM1665.jpg"
+                src={"http://localhost:1337"+member?.image?.formats?.thumbnail?.url}
                 alt="Team Member 1"
                 className="team-member__image"
               />
-              <h3 className="team-member__name">Amr Atef</h3>
-              <p className="team-member__role">CEO & Founder</p>
+              <h3 className="team-member__name">{member?.Name}</h3>
+              <p className="team-member__role">{member?.title}</p>
             </div>
-            <div className="team-member">
-              <img
-                src="../../../public/images for my app/team-member/_ARM1665.jpg"
-                alt="Team Member 2"
-                className="team-member__image"
-              />
-              <h3 className="team-member__name">Amr Atef</h3>
-              <p className="team-member__role">Head of Operations</p>
-            </div>
-            <div className="team-member">
-              <img
-                src="../../../public/images for my app/team-member/_ARM1665.jpg"
-                alt="Team Member 3"
-                className="team-member__image"
-              />
-              <h3 className="team-member__name">Amr Atef</h3>
-              <p className="team-member__role">Lead Designer</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
