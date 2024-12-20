@@ -4,22 +4,23 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 
 i18n
-  .use(HttpApi) // Load translations from files
-  .use(LanguageDetector) // Detect user's language
-  .use(initReactI18next) // Bind i18next to React
+  .use(HttpApi)
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    supportedLngs: ["en", "ar"], // Supported languages
-    fallbackLng: "en", // Fallback language
+    supportedLngs: ["en", "ar"],
+    fallbackLng: "en",
+    lng: "en",
     debug: true,
     backend: {
-      loadPath: "/locales/{{lng}}/translation.json", // Path to translation files
+      loadPath: "/locales/{{lng}}/translation.json",
     },
     detection: {
-      order: ["cookie", "localStorage", "path", "navigator"], // Order of detection
-      caches: ["cookie"], // Where to cache user language
+      order: ["cookie", "localStorage", "path", "navigator"],
+      caches: ["cookie"],
     },
     react: {
-      useSuspense: false, // Disable suspense mode
+      useSuspense: false,
     },
   });
 
