@@ -17,6 +17,7 @@ import Login from "./pages/login/Login";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../src/i18n/i18n";
 import AboutUs from "./pages/aboutUs/AboutUs";
+import ScrollToTop from "./components/scrollToTop/ScrollToTop";
 export default function App() {
   let Routes = createBrowserRouter([
     {
@@ -42,7 +43,9 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <CartProvider>
           <CategoryProvider>
-            <RouterProvider router={Routes} />
+            <RouterProvider router={Routes} >
+              <ScrollToTop/>
+            </RouterProvider>
           </CategoryProvider>
         </CartProvider>
       </QueryClientProvider>
